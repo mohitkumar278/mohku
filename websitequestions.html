@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bilingual Quiz Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    select, button {
+      padding: 10px;
+      margin: 10px 0;
+      width: 100%;
+      font-size: 16px;
+    }
+    h1, h2 {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="title">Welcome to the Quiz!</h1>
+
+    <label for="language">Choose Language / भाषा चुनें:</label>
+    <select id="language" onchange="changeLanguage()">
+      <option value="en">English</option>
+      <option value="hi">हिंदी</option>
+    </select>
+
+    <label id="class-label" for="class">Select Class / कक्षा चुनें:</label>
+    <select id="class">
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+    </select>
+
+    <label id="subject-label" for="subject">Select Subject / विषय चुनें:</label>
+    <select id="subject">
+      <option value="math">Maths / गणित</option>
+      <option value="science">Science / विज्ञान</option>
+      <option value="sst">SST / सामाजिक विज्ञान</option>
+      <option value="english">English / अंग्रेज़ी</option>
+    </select>
+
+    <button onclick="startQuiz()" id="start-btn">Start Quiz / प्रश्नोत्तरी शुरू करें</button>
+  </div>
+
+  <script>
+    function changeLanguage() {
+      const lang = document.getElementById('language').value;
+      document.getElementById('title').innerText =
+        lang === 'hi' ? 'प्रश्नोत्तरी में आपका स्वागत है!' : 'Welcome to the Quiz!';
+      document.getElementById('class-label').innerText =
+        lang === 'hi' ? 'कक्षा चुनें:' : 'Select Class:';
+      document.getElementById('subject-label').innerText =
+        lang === 'hi' ? 'विषय चुनें:' : 'Select Subject:';
+      document.getElementById('start-btn').innerText =
+        lang === 'hi' ? 'प्रश्नोत्तरी शुरू करें' : 'Start Quiz';
+    }
+
+    function startQuiz() {
+      const lang = document.getElementById('language').value;
+      const selectedClass = document.getElementById('class').value;
+      const selectedSubject = document.getElementById('subject').value;
+      alert((lang === 'hi' ? 'कक्षा ' : 'Class ') + selectedClass + ' - ' + selectedSubject + ' quiz starting soon!');
+      // Future: Redirect to quiz page with questions
+    }
+  </script>
+</body>
+</html>
